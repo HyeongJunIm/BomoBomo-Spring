@@ -53,7 +53,8 @@ class MyPageMapperTest {
 //    @Test
 //    void selectSitterList() {
 //        List<MyPageSitterVo> myPageSitterVos =myPageMapper.selectSitterList(myPageSitterVo);
-//        log.info(myPageSitterVos.toString());
+//    (myPageMapper.selectMatch(1L).toString());
+////    }    log.info(myPageSitterVos.toString());
 //    }
 
 //    @Test
@@ -76,9 +77,7 @@ class MyPageMapperTest {
 //    @Test
 //    void selectMatch(){
 //        myPageMapper.selectMatch(1L);
-//        log.info(myPageMapper.selectMatch(1L).toString());
-//    }
-
+//        log.info
     //메칭된 직원의 정보와 이미지 조회
     @Test
     void selectEmpInfoImg(){
@@ -99,7 +98,7 @@ class MyPageMapperTest {
     void selectMatchEmpRating(){
         myPageMapper.selectMatchEmpRating(1L);
 
-        log.info(myPageMapper.selectMatchEmpRating(1L).toString());
+//        log.info(myPageMapper.selectMatchEmpRating(1L).toString());
     }
 
 

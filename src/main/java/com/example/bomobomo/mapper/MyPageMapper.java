@@ -13,10 +13,19 @@ import java.util.List;
 @Mapper
 public interface MyPageMapper {
 
-    // 시터 결제 내역 조회
+    /**시터 결제 내역 조회
+     * 쿼리에 2가지이 변수를 넘겨줘서 조회
+     * @param criteria
+     * @param userNumber
+     * @return
+     */
     public List<MyPageSitterVo> selectSitterList(@Param("criteria")Criteria criteria,@Param("userNumber")Long userNumber);
 
-    // 시터 결제 내용 조회
+    /**결제한 시터의 전체 내용 조회
+     *
+     * @param matchNumber
+     * @return
+     */
     public  List<EstContentDto> selectEst(Long matchNumber);
 
     // 시터 결제 내역 전체 페이지 구하기

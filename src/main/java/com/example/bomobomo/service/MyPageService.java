@@ -22,7 +22,13 @@ import java.util.Optional;
 public class MyPageService {
     private final MyPageMapper myPageMapper;
 
-    // 시터이용 결제 전체 리스트 조회
+    /**시터 결제 내역 조회
+     *
+     * @param criteria
+     * @param userNumber
+     * @return
+     *   return => 사용자가 결제한 모든 금액을 합산하여 리스트 금액으로 리턴함
+     */
     public List<MyPageSitterVo> findSitterList(Criteria criteria, Long userNumber){
         if (userNumber == null) {
             throw new IllegalArgumentException("회원정보 없음!");
@@ -43,7 +49,12 @@ public class MyPageService {
         log.info("===========================토탈{}",myPageSitterVos);
         return myPageSitterVos;
     }
-    //시터 결제 리스트 토탈 조회
+
+    /** 시터 결재내역 페이징 처리를 의하 전체 수 조회
+     *
+     * @param userNumber
+     * @return
+     */
     public int getTotal(Long userNumber){
         if (userNumber == null) {
             throw new IllegalArgumentException("회원 번호 누락!");
@@ -51,7 +62,12 @@ public class MyPageService {
         return myPageMapper.selectTotal(userNumber);
     }
 
-    //이벤트 결제 내역 전체 리스트 조회
+    /**
+     * 이벤트 결재한 모든 내용 조회  , 페이징처리
+     * @param criteria
+     * @param userNumber
+     * @return
+     */
     public List<MyPageEventVo> findEventList(Criteria criteria,Long userNumber){
         if (userNumber == null) {
             throw new IllegalArgumentException("회원번호 누락!");
@@ -60,7 +76,11 @@ public class MyPageService {
         return myPageMapper.selectEventList(criteria,userNumber);
     }
 
-    //이벤트 결제 내역 전체 페이지 조회
+    /**
+     * 페이징 처리를 위한 이벤트 결재한 건수 조회
+     * @param userNumber
+     * @return
+     */
     public int findEventTotal(Long userNumber){
         if (userNumber == null) {
             throw new IllegalArgumentException("회원번호 누락!");
@@ -69,13 +89,20 @@ public class MyPageService {
         return myPageMapper.selectEventTotal(userNumber);
     }
 
-    // 마이페이지 진입시 매칭되는 직원의 상태 출력
+    /**
+     * 매칭 시터 조회
+     * 매칭이 안된 상태에서 예외 발생하여 안된 상태처리
+     * @param userNumber
+     * @return
+     * @throws NullPointerException
+     */
     public MatchDto findMatch(Long userNumber) throws NullPointerException{
         if (userNumber == null) {
             throw new IllegalArgumentException("회원정보 누락!");
         }
         System.out.println("유저번호 : " + userNumber);
-        return myPageMapper.selectMatch(userNumber);
+        return Optional.ofNullable(myPageMapper.selectMatch(userNumber))
+                .orElseThrow(()->{throw new NullPointerException("매칭된 시터 없음!");});
     }
 
     //메칭된 직원의 정보와 이미지 조회
