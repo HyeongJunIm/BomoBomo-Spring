@@ -28,46 +28,96 @@ public interface MyPageMapper {
      */
     public  List<EstContentDto> selectEst(Long matchNumber);
 
-    // 시터 결제 내역 전체 페이지 구하기
+    /**
+     * 페이징 처리를 위한  결재 내역 총 갯수 조회
+     * @param userNumber
+     * @return
+     */
     public int selectTotal(Long userNumber);
 
-    //이벤트 결제 내역 조회
+    /**
+     * 이벤트 결재 내역과 페이징 처리
+     * @param criteria 이벤트 내역 페이징처리를 위한 변수
+     * @param userNumber 해당 사용자의 건수 조회
+     * @return
+     */
     public List<MyPageEventVo> selectEventList(@Param("criteria")Criteria criteria,@Param("userNumber")Long userNumber);
 
-    //이벤트 결제 내역 전체 페이지 구하기
+    /**
+     * 이벤트 결재내역 페이징을 위한 전체 건수 조회
+     * @param userNumber
+     * @return
+     */
     public int selectEventTotal(Long userNumber);
 
-   // 마이페이지 진입시 매칭되는 직원의 상태 출력
+    /**
+     * 사용자의 시터 매칭 상태 조회
+     * @param userNumber
+     * @return
+     */
     public MatchDto selectMatch(Long userNumber);
 
-    //메칭된 직원의 정보와 이미지 조회
+    /**
+     * 사용자와 매칭된 직원 정보 조회
+     * @param empNumber
+     * @return
+     */
     public MatchEmpInfoVo selectEmpInfoImg(Long empNumber);
 
-    //매칭된 직원의 활동 이름과 활동 이미지 조회
+    /**
+     * 매칭된 직원의 활동영역 이미지와 활동명 전체 리스트 조회
+     * @param empNumber
+     * @return
+     */
     public List<EmpActItemImgVo> selectEmpActItemImg(Long empNumber);
 
-    //매칭된 직원의 평점을 구하는 쿼리
+    /**
+     * 매칭직원의 평점 조회
+     * @param empNumber
+     * @return
+     */
     public double selectMatchEmpRating(Long empNumber);
 
-    //매칭 단건 조회
-//    public MatchDto selectOne(Long userNumber);
 
-    // 매치된 회원의 정보
+    /**
+     * 결제시 사용자의 정보를 조회
+     * @param userNumber
+     * @return
+     */
     public MatchUserInfoVo selectMatchUserInfo(Long userNumber);
 
-    //결제 정보
+    /**
+     * 사용자의 결제 견적서 조회
+     * @param userNumber
+     * @return
+     */
     public List<MatchBuyInfoVo> selectMatchBuyInfo(Long userNumber);
 
-    //결제후 매칭되었던 데이터 상태 수정
+    /**
+     * 결제 후 사용자의 매칭 상태 수정
+     * @param matchNumber
+     */
     public void update(Long matchNumber);
 
 
-    //회원정보수정 디폴트 값 조회(아이디 ,휴대전화)
+    /**
+     * 회원정보 수정
+     * @param userNumber
+     * @return
+     */
     public UserDto selectUser(Long userNumber);
 
-    //회원정보수정 디폴트 값 조회(주솟)
+    /**
+     * 회원 주소 정보 조회
+     * @param userNumber
+     * @return
+     */
     public AddressDto selectUserAddress(Long userNumber);
-    //회원정보 삭제
+
+    /**
+     * 회원 정보 삭제
+     * @param userNumber
+     */
     public void deleteUser(Long userNumber);
 
 

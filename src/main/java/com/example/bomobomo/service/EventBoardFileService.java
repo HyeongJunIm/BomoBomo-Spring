@@ -26,10 +26,16 @@ import java.util.UUID;
 public class EventBoardFileService {
     private final EventBoardFileMapper eventBoardFileMapper;
 
+    /**
+     * 이벤트 리뷰 작성시 이미지 파일 저장 경로
+     */
     @Value("${file.dir}")
     private String fileDir;
 
-    // 파일 저장
+    /**
+     * 이미지 파일 저장
+     * @param eventBoardImgDto
+     */
     public void register(EventBoardImgDto eventBoardImgDto){
         eventBoardFileMapper.insert(eventBoardImgDto);
     }
@@ -40,13 +46,20 @@ public class EventBoardFileService {
             throw new IllegalArgumentException("게시물 번호 누락!");
         }
         return  eventBoardFileMapper.selectList(eventBoardNumber);
-    };
+    }
 
+    /**
+     * 이미지 파일 저장 경로 및 파일 이름 설정
+     * @param file
+     * @return
+     * @throws IOException
+     * 파일 경로가 없을 시 예외 처리
+     */
     public EventBoardImgDto saveFile(MultipartFile file) throws IOException{
         //사용자가 올린 파일 이름
         String originName=file.getOriginalFilename();
 
-        //파일 이름에 붙여줄 uuid 생성
+        //파일 이름에 붙여줄 uuid 랜덤생성
         UUID uuid=UUID.randomUUID();
         //uuid와 이름을 합쳐준다
         String sysName=uuid.toString() + "_" + originName;
@@ -61,13 +74,7 @@ public class EventBoardFileService {
         //전체 경로, 파일이름 결합
         File uploadFile =new File(uploadPath,sysName);
         file.transferTo(uploadFile);
-        //썸네일 저장 ~~ 확인후 추가
-        // 이미지 파일인 경우에만 썸네일을 저장한다
-//        if(Files.probeContentType(uploadFile.toPath()).startsWith("image")){
-//            FileOutputStream out = new FileOutputStream(new File(uploadPath,"th_"+sysName));
-//            Thumbnailator.createThumbnail(file.getInputStream(), out , 300,200);
-//            out.close();
-//        }
+
 
         // 파일이름을 DTO에 저장
         EventBoardImgDto eventBoardImgDto =new EventBoardImgDto();
@@ -80,20 +87,22 @@ public class EventBoardFileService {
     }
 
 
-    //오늘날짜를 구하는 메소드
+    /**
+     * 파일 경로를 만들기위한 날짜 조회
+     * @return
+     */
 
     private String getUploadPath(){
 
         return new SimpleDateFormat("yyyy/MM/dd").format(new Date());
     }
+
     //게시판에서는 파일을 하나만 저장한다
     public void registerAndSaveFile(MultipartFile file, Long eventBoardNumber)throws IOException{
 
             EventBoardImgDto eventBoardImgDto = saveFile(file);
             eventBoardImgDto.setEventBoardNumber(eventBoardNumber);
             register(eventBoardImgDto);
-
-
     }
 
     //삭제

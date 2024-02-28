@@ -28,7 +28,13 @@ public class MyPageController {
     private final EventBoardService eventBoardService;
 
 
-    //mypage 메인 으로 이동
+    /**
+     * 마이 페이지 메인으로 이동
+     * 값의 유무처리에 따라 예외를 발생시켜 보여지는 페이지 변경
+     * @param req
+     * @param model
+     * @return
+     */
     @GetMapping("/main")
     public String showMainPage(HttpServletRequest req, Model model){
         Long userNumber=(Long)req.getSession().getAttribute("userNumber");
@@ -55,15 +61,18 @@ public class MyPageController {
         return "mypage/myPageMain";
 
     }
-    // 신청서 페이지 이동
+
+    /**
+     * OrderDto 값의 따라서 페이지 진입시 예외를 발생시켜 동기통신으로 페이지 이동
+     * @param req
+     * @param model
+     * @return
+     */
     @GetMapping("/application")
     public String showapplicationPage(HttpServletRequest req,Model model){
         Long userNumber=(Long)req.getSession().getAttribute("userNumber");
         System.out.println(userNumber);
-        // Order 조회하는 서비스
-        //if
-        // 수정 페이지
-        //(model에 값을 넣어서 뿌려준다)
+
         try {
             OrderDto orderDto=orderService.findOrder(userNumber);
             System.out.println(orderDto.toString());
@@ -91,6 +100,7 @@ public class MyPageController {
         // 신청서 내용 입력 후 이동
         return new RedirectView("/mypage/main");
     }
+
     @PostMapping("/updateApplication")
     public RedirectView updateApplication(OrderDto orderDto,HttpServletRequest req){
         Long userNumber =(Long)req.getSession().getAttribute("userNumber");
@@ -102,29 +112,40 @@ public class MyPageController {
         return new RedirectView("/mypage/main");
     }
 
-    // 결제 내역 페이지로 이동 (매핑방법 확인)
+    /**
+     *  시터 결제내역 리스트 조회와 페이징 처리
+     * @param model
+     * @param req
+     * @param criteria
+     * @return
+     */
     @GetMapping("/buy")
     public String showBuyPage(Model model, HttpServletRequest req, Criteria criteria){
         criteria.setAmount(5);
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
         PageVo pageVo = new PageVo(myPageService.getTotal(userNumber), criteria);
-//        Criteria criteria = new Criteria();
 
 
         List<MyPageSitterVo> myPageSitterVos=myPageService.findSitterList(criteria, userNumber);
 
-        log.info("제발~~"+myPageSitterVos);
         model.addAttribute("buyList",myPageSitterVos);
         model.addAttribute("pageVo", pageVo);
 
         return "mypage/buyPage";
     }
+
+    /**
+     * 이벤트 결제 내역 리스트 조회 및 페이징 처리
+     * @param model
+     * @param req
+     * @param criteria
+     * @return
+     */
     @GetMapping("/buyEvent")
     public String showBuyEventPage(Model model, HttpServletRequest req, Criteria criteria){
         criteria.setAmount(5);
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
 
-//        Criteria criteria = new Criteria();
 
         PageVo pageVO=new PageVo(myPageService.findEventTotal(userNumber),criteria);
         model.addAttribute("eventList",myPageService.findEventList(criteria,userNumber));
@@ -132,7 +153,12 @@ public class MyPageController {
         return "mypage/buyEventPage";
     }
 
-    //회원정보 수정 창으로 이동
+    /**
+     * 회원정보 수정 페이지 이동
+     * @param req
+     * @param model 이전 DB에 있는 저장 내용 조회
+     * @return
+     */
     @GetMapping("/userManage")
     public String showuserManagePage(HttpServletRequest req,Model model){
         Long userNumber=(Long)req.getSession().getAttribute("userNumber");
@@ -148,7 +174,14 @@ public class MyPageController {
 
         return "mypage/userManageMentPage";
     }
-    //회원정보 수정후 이동
+
+    /**
+     * 수정된 회원정보 update
+     * @param userDto 수정된 유저정보
+     * @param addressDto 수정된 유저 주소
+     * @param req 현재 session에 있는 유저
+     * @return
+     */
     @PostMapping("/userManage")
     public RedirectView userManageModify(UserDto userDto, AddressDto addressDto,HttpServletRequest req){
         Long userNumber=(Long)req.getSession().getAttribute("userNumber");
@@ -169,6 +202,12 @@ public class MyPageController {
         return new RedirectView("/mypage/main");
     }
 
+    /**
+     * 회원 탈퇴
+     * @param userNumber
+     * @param req
+     * @return
+     */
     @GetMapping("/userInfoDelete")
     public String removeUserInfo(@RequestParam(name = "userNumber") Long userNumber,HttpServletRequest req){
 
@@ -196,8 +235,6 @@ public class MyPageController {
                                          @RequestParam("eventBoardImg")MultipartFile file){
         Long userNumber=(Long) req.getSession().getAttribute("userNumber");
         eventBoardDto.setUserNumber(userNumber);
-        System.out.println("-------"+eventBoardDto);
-        System.out.println(eventBoardDto);
         eventBoardService.registerAndFileproc(eventBoardDto,file);
 
         return new RedirectView("/mypage/main");
@@ -211,8 +248,6 @@ public class MyPageController {
                                       @ModelAttribute("matchNumber") Long matchNumber,
                                       @ModelAttribute("empNumber") Long empNumber,
                                       Model model){
-        log.info("=======================직원이름{}",empName);
-        log.info("~~~~~~~직원번호{}",empNumber);
         model.addAttribute("empName",empName);
         return "myPage/siterReview";
     }

@@ -101,11 +101,18 @@ public class MyPageService {
             throw new IllegalArgumentException("회원정보 누락!");
         }
         System.out.println("유저번호 : " + userNumber);
-        return Optional.ofNullable(myPageMapper.selectMatch(userNumber))
-                .orElseThrow(()->{throw new NullPointerException("매칭된 시터 없음!");});
+        return myPageMapper.selectMatch(userNumber);
     }
 
+
+
     //메칭된 직원의 정보와 이미지 조회
+
+    /**
+     * 매칭된 직원의 정보와 이미지 조회
+     * @param empNumber
+     * @return
+     */
     public MatchEmpInfoVo findEmpInfoImg(Long empNumber){
         if (empNumber == null) {
             throw new IllegalArgumentException("직원정보 누락!");
@@ -115,7 +122,11 @@ public class MyPageService {
                 .orElseThrow(()->{throw new IllegalArgumentException("매칭정보 없음");});
     }
 
-    //매칭된 직원의 활동 이름과 활동 이미지 조회
+    /**
+     * 매칭된 직원의 활동 이미지와 활동 이름 조회
+     * @param empNumber
+     * @return
+     */
     public List<EmpActItemImgVo> findEmpActItemImg(Long empNumber){
         if (empNumber == null) {
             throw new IllegalArgumentException("직원번호누락!");
@@ -125,26 +136,30 @@ public class MyPageService {
 
     }
 
-    //매칭된 직원의 평점을 구하는 쿼리
+    /**
+     * 매칭된 직원의 평점 조회
+     * 예외 처리를 통한 0점시 처리
+     * @param empNumber
+     * @return
+     */
     public double findMatchEmpRating(Long empNumber){
         if (empNumber == null) {
             throw new IllegalArgumentException("회원정보 없음!");
         }
-
-
         double avg = 0;
         try {
             avg = myPageMapper.selectMatchEmpRating(empNumber);
         } catch (BindingException e) {
             avg=0.0;
         }
-
-
         return avg;
-
     }
 
-     // 매치된 회원의 정보
+    /**
+     * 매칭된 회원의 정보 조회 (주소 포함)
+     * @param userNumber
+     * @return
+     */
         public MatchUserInfoVo findMatchUserInfo(Long userNumber){
             if (userNumber == null) {
                 throw new IllegalArgumentException("결제 정보 없음!");
@@ -153,9 +168,13 @@ public class MyPageService {
             return Optional.ofNullable(myPageMapper.selectMatchUserInfo(userNumber))
                     .orElseThrow(()->{throw new IllegalArgumentException("회원정보 없음!");});
         }
-    //
-    //    //결제 정보
-        public List<MatchBuyInfoVo> findMatchBuyInfo(Long userNumber){
+
+    /**
+     * 결제 정보 조회
+     * @param userNumber
+     * @return
+     */
+    public List<MatchBuyInfoVo> findMatchBuyInfo(Long userNumber){
             if (userNumber == null) {
                 throw new IllegalArgumentException("정보없음!");
 
@@ -164,16 +183,24 @@ public class MyPageService {
             return myPageMapper.selectMatchBuyInfo(userNumber);
 
         }
-        // 결제후 상태 수정
-        public void statusUpdate(Long matchNumber){
+
+    /**
+     * 결제후 매칭 상태 수정
+     * @param matchNumber
+     */
+    public void statusUpdate(Long matchNumber){
             if ( matchNumber == null) {
                 throw new IllegalArgumentException("회원 정보 없음!");
             }
              myPageMapper.update(matchNumber);
         }
 
-        // 마이페이지 회원정보 수정 회원 디폴트값 조회
-        public UserDto findUser(Long userNumber){
+    /**
+     * 회원 정보 수정
+     * @param userNumber
+     * @return
+     */
+    public UserDto findUser(Long userNumber){
             if (userNumber == null) {
                 throw new IllegalArgumentException("회원정보 없음!");
             }
@@ -182,8 +209,12 @@ public class MyPageService {
                     .orElseThrow(()->{throw new IllegalArgumentException("회원정보 없음!");});
         }
 
-        //마이페이지 회원정보 수정 회원 주소 조회
-        public AddressDto findUserAddress(Long userNumber){
+    /**
+     * 회원 정보 수정시 주소 조회
+     * @param userNumber
+     * @return
+     */
+    public AddressDto findUserAddress(Long userNumber){
             if (userNumber == null) {
                 throw new IllegalArgumentException("회원정보 없음!");
             }

@@ -197,6 +197,8 @@
         where user_number =#{userNumber}
     </select>
 
+
+
     <delete id="deleteUser">
         delete
         from USERS

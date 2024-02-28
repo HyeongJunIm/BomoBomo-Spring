@@ -59,12 +59,21 @@ public class MyPageRestController {
         return FileCopyUtils.copyToByteArray(new File(fileEmpActImg, fileFullPath));
     }
     // 마이페이지 시터 이용후기 사용자가 작성한 내용만 출력
+
+    /**
+     * 시터이용후기 메인페이지 비동기 처리
+     * @param page
+     * @param req
+     * @param criteria
+     * @return
+     */
     @GetMapping("/sitterReviewList/{page}")
     public Map<String, Object> showEventReviewList(@PathVariable("page") int page,HttpServletRequest req, Criteria criteria){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
         criteria.setPage(page);
 
         PageVo pageVo = new PageVo(sitterBoardService.findSitterReviewTotal(userNumber), criteria);
+        //내가 작성한 시터리뷰 조회 쿼리
         List<SitterBoardVo> sitterBoardVoList = sitterBoardService.findAll(criteria,userNumber);
 
         Map<String, Object> map = new HashMap<>();
@@ -73,7 +82,13 @@ public class MyPageRestController {
         return map;
     }
 
-    // 마이페이지 이벤트 이용후기 사용자가 작성한 내용만 출력
+    /**
+     * 내가 작성한 이벤트 후기 메인페이지 비동기 처리
+     * @param pages
+     * @param req
+     * @param criteria
+     * @return
+     */
     @GetMapping("/eventReviewList/{pages}")
     public Map<String, Object> showSitterReviewList(@PathVariable("pages") int pages,HttpServletRequest req, Criteria criteria){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
@@ -88,7 +103,11 @@ public class MyPageRestController {
         return map;
     }
 
-
+    /**
+     * 매칭 시터 결제페이지 이동시 결제 정보 조회
+     * @param req
+     * @return
+     */
     @PostMapping("/purchase")
     public Map<String, Object> purchasePage(HttpServletRequest req){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
@@ -103,6 +122,11 @@ public class MyPageRestController {
         return map;
     }
 
+    /**
+     * 매칭 시터 결제 완료후 경제 상태 변경
+     * @param matchNumber
+     * @param matchDto 매칭대상의 정보 필드
+     */
     @PatchMapping("/{matchNumber}")
     public void modify(@PathVariable("matchNumber") Long matchNumber,
                        @RequestBody MatchDto matchDto){

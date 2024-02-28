@@ -41,7 +41,7 @@
                 <div class="swiper-slide" th:each=" event : ${list}">
                     <a th:href="@{/event/detail(eventNumber=${event.eventNumber})}">
                     <div class="image-container">
-                        <img th:src="'/upload/' + ${event.eventImgUploadPath} + '/' + ${event.eventImgUuid} +'_' + ${event.eventImgName}">
+                        <img th:src="'/upload/eventImg/' + ${event.eventImgUploadPath} + '/' + ${event.eventImgUuid} +'_' + ${event.eventImgName}">
                     </div>
                     <div class="title-container" th:text="${event.eventName}">
                     </div>
