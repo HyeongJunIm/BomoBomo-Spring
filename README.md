@@ -29,31 +29,26 @@
 [BOMOBOMO 포트폴리오.pdf](https://github.com/bokkaa/SpringBoot-BomoBomo/files/14415618/BOMOBOMO.pdf)
 
 ## 📌 내가 맡은 기능
-#### 마이페이지 
-##### 시터 매칭  <a href="https://github.com/HyeongJunIm/BomoBomo-Spring/wiki/%EB%B2%A0%EC%9D%B4%EB%B9%84%EC%8B%9C%ED%84%B0-%EB%A7%A4%EC%B9%AD-%EB%B0%8F-%EA%B2%B0%EC%A0%9C" >상세보기 - WIKI 이동</a>
+### <h2>마이페이지</h2> 
+#### 시터 매칭  <a href="https://github.com/HyeongJunIm/BomoBomo-Spring/wiki/%EB%B2%A0%EC%9D%B4%EB%B9%84%EC%8B%9C%ED%84%B0-%EB%A7%A4%EC%B9%AD-%EB%B0%8F-%EA%B2%B0%EC%A0%9C" >상세보기 - WIKI 이동</a>
    - 매칭 시터 목록 
    - 매칭 시터 상태 상세보기('면접대기','결제대기')
    - 매칭 시터 결제  
+#### 결제내역 <a href="https://github.com/bokkaa/SpringBoot-BomoBomo/wiki/%EA%B3%B5%EC%A7%80%EC%82%AC%ED%95%AD-%EA%B2%8C%EC%8B%9C%ED%8C%90" >상세보기 - WIKI 이동</a>
+- 시터 결재 및 이벤트 결제 목록  
+- 리뷰 작성 
+- 리뷰 상세 보기 
 
-- 
-#### FAQ / 공지사항 게시판 <a href="https://github.com/bokkaa/SpringBoot-BomoBomo/wiki/%EA%B3%B5%EC%A7%80%EC%82%AC%ED%95%AD-%EA%B2%8C%EC%8B%9C%ED%8C%90" >상세보기 - WIKI 이동</a>
-- FAQ 목록
-- 공지사항 목록
-- 공지사항 상세보기
+#### 리뷰 작성 <a href="https://github.com/bokkaa/SpringBoot-BomoBomo/wiki/%EB%8F%8C%EB%B4%84-%ED%9B%84%EA%B8%B0-%EA%B2%8C%EC%8B%9C%ED%8C%90" >상세보기 - WIKI 이동</a>
+- 시터 및 이벤트 결제 리뷰 작성 가능(평점 및 파일첨부)
+- 메인 페이지 항목별 작성 리뷰 목록
 
-#### 돌봄 후기 게시판 <a href="https://github.com/bokkaa/SpringBoot-BomoBomo/wiki/%EB%8F%8C%EB%B4%84-%ED%9B%84%EA%B8%B0-%EA%B2%8C%EC%8B%9C%ED%8C%90" >상세보기 - WIKI 이동</a>
-- 돌봄 후기 목록
-- 돌봄 후기 상세
-- 돌봄 후기 수정 삭제
-- 댓글 기능
-
-#### 이벤트 후기 게시판 <a href="https://github.com/bokkaa/SpringBoot-BomoBomo/wiki/%EC%9D%B4%EB%B2%A4%ED%8A%B8-%ED%9B%84%EA%B8%B0-%EA%B2%8C%EC%8B%9C%ED%8C%90" >상세보기 - WIKI 이동</a>
-- 이벤트 후기 목록
-- 이벤트 후기 상세
-- 이벤트 후기 수정 삭제
-- 댓글 기능
-#### 에러 페이지 <a href="https://github.com/bokkaa/SpringBoot-BomoBomo/wiki/%EC%97%90%EB%9F%AC-%ED%8E%98%EC%9D%B4%EC%A7%80" >상세보기 - WIKI 이동</a>
-- 에러 페이지
+#### 회원정보 수정, 탈퇴 <a href="https://github.com/HyeongJunIm/BomoBomo-Spring/wiki/%ED%9A%8C%EC%9B%90%EC%A0%95%EB%B3%B4-%EC%88%98%EC%A0%95-%EB%B0%8F-%ED%9A%8C%EC%9B%90-%ED%83%88%ED%87%B4" >상세보기 - WIKI 이동</a>
+- 회원정보 수정
+- 회원탈퇴 
+#### 자녀 신상정보 작성,수정 <a href="https://github.com/HyeongJunIm/BomoBomo-Spring/wiki/%EC%9C%A0%EC%A0%80-%EC%9E%90%EB%85%80%EC%8B%A0%EC%83%81%EC%A0%95%EB%B3%B4-%EC%9E%91%EC%84%B1-%EB%B0%8F-%EC%88%98%EC%A0%95" >상세보기 - WIKI 이동</a>
+- 자녀 신상정보 작성 페이지
+- 자녀 신상정보 수정 
 
 
 
