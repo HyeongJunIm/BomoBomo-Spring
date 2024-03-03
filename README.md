@@ -26,7 +26,8 @@
 
 ### 📌포트폴리오 
 
-[BOMOBOMO 포트폴리오.pdf](https://github.com/bokkaa/SpringBoot-BomoBomo/files/14415618/BOMOBOMO.pdf)
+[BOMOBOMO.pdf](https://github.com/HyeongJunIm/BomoBomo-Spring/files/14471813/BOMOBOMO.pdf)
+
 
 ## 📌 내가 맡은 기능
 ### <h2>마이페이지</h2> 
