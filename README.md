@@ -35,12 +35,12 @@
    - 매칭 시터 목록 
    - 매칭 시터 상태 상세보기('면접대기','결제대기')
    - 매칭 시터 결제  
-#### 결제내역 <a href="https://github.com/bokkaa/SpringBoot-BomoBomo/wiki/%EA%B3%B5%EC%A7%80%EC%82%AC%ED%95%AD-%EA%B2%8C%EC%8B%9C%ED%8C%90" >상세보기 - WIKI 이동</a>
+#### 결제내역 <a href="https://github.com/HyeongJunIm/BomoBomo-Spring/wiki/%EA%B2%B0%EC%A0%9C%EB%82%B4%EC%97%AD" >상세보기 - WIKI 이동</a>
 - 시터 결재 및 이벤트 결제 목록  
 - 리뷰 작성 
 - 리뷰 상세 보기 
 
-#### 리뷰 작성 <a href="https://github.com/bokkaa/SpringBoot-BomoBomo/wiki/%EB%8F%8C%EB%B4%84-%ED%9B%84%EA%B8%B0-%EA%B2%8C%EC%8B%9C%ED%8C%90" >상세보기 - WIKI 이동</a>
+#### 리뷰 작성 <a href="https://github.com/HyeongJunIm/BomoBomo-Spring/wiki/%EA%B2%B0%EC%A0%9C-%EB%A6%AC%EB%B7%B0-%EC%9E%91%EC%84%B1-%EB%B0%8F-%EB%A6%AC%EB%B7%B0%EB%AA%A9%EB%A1%9D" >상세보기 - WIKI 이동</a>
 - 시터 및 이벤트 결제 리뷰 작성 가능(평점 및 파일첨부)
 - 메인 페이지 항목별 작성 리뷰 목록
 
