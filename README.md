@@ -29,10 +29,13 @@
 [BOMOBOMO 포트폴리오.pdf](https://github.com/bokkaa/SpringBoot-BomoBomo/files/14415618/BOMOBOMO.pdf)
 
 ## 📌 내가 맡은 기능
-#### 마이페이지 <a href="https://github.com/bokkaa/SpringBoot-BomoBomo/wiki/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80" >상세보기 - WIKI 이동</a>
-- 베스트 돌봄 후기 Top6
-- 베스트 이벤트 후기 Top6
+#### 마이페이지 
+##### 시터 매칭  <a href="https://github.com/HyeongJunIm/BomoBomo-Spring/wiki/%EB%B2%A0%EC%9D%B4%EB%B9%84%EC%8B%9C%ED%84%B0-%EB%A7%A4%EC%B9%AD-%EB%B0%8F-%EA%B2%B0%EC%A0%9C" >상세보기 - WIKI 이동</a>
+   - 매칭 시터 목록 
+   - 매칭 시터 상태 상세보기('면접대기','결제대기')
+   - 매칭 시터 결제  
 
+- 
 #### FAQ / 공지사항 게시판 <a href="https://github.com/bokkaa/SpringBoot-BomoBomo/wiki/%EA%B3%B5%EC%A7%80%EC%82%AC%ED%95%AD-%EA%B2%8C%EC%8B%9C%ED%8C%90" >상세보기 - WIKI 이동</a>
 - FAQ 목록
 - 공지사항 목록
